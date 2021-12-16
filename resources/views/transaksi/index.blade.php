@@ -52,9 +52,9 @@
                 <td>{{ $t->status }}</td>
                 @can('manage-users')
                 <td>
-                <form action="{{ route('transaksiid', $id) }}" method="post">
+                <form action="/transaksi/{{$t->id}}" method="post">
                   <a href="/transaksi/{{$t->id}}/edit" class="btn btn-warning">Edit</a>
-                  <a href="/transaksi/{{$t->id}}" class="btn btn-info">View {{$t->id}}</a>
+                  <a href="/transaksi/{{$t->id}}" class="btn btn-info">View</a>
                   @csrf
                   @method('DELETE')
                   <button type="submit" name="delete" class="btn btn-danger">Delete</button><br><br>

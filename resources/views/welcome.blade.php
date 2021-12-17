@@ -14,9 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('') }}dist/css/adminlte.min.css">
   <style>
-      html {
-        background-image: url('{{ asset('') }}public/dist/img/perpus2.jpg')
-      }
+    body {
+      background-image: url("{{ asset('dist/img/perpus1.jpg') }}")
+    }
   </style>
 </head>
 <body class="hold-transition login-page">

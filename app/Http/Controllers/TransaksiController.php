@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaksi;
 use App\Models\Buku;
 use App\Models\Anggota;
+use PDF;
 use DB;
 
 class TransaksiController extends Controller
@@ -22,8 +23,9 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksis = DB::table('transaksis')
-                    ->join('anggotas', 'anggotas.id', '=', 'transaksis.anggota_id')
-                    ->join('bukus', 'bukus.id', '=', 'transaksis.buku_id')
+                    ->join('anggotas', 'transaksis.anggota_id', '=', 'anggotas.id')
+                    ->join('bukus', 'transaksis.buku_id', '=', 'bukus.id')
+                    ->select('transaksis.id as transaksi_id', 'transaksis.*', 'anggotas.*', 'bukus.*')
                     ->get();
         return view('transaksi.index',['transaksis'=>$transaksis]);
     }
@@ -64,8 +66,9 @@ class TransaksiController extends Controller
     public function show($id)
     {
         $transaksi = DB::table('transaksis')
-            ->join('anggotas', 'anggotas.id', '=', 'transaksis.anggota_id')
-            ->join('bukus', 'bukus.id', '=', 'transaksis.buku_id')
+            ->join('anggotas', 'transaksis.anggota_id', '=', 'anggotas.id')
+            ->join('bukus', 'transaksis.buku_id', '=', 'bukus.id')
+            ->select('transaksis.id as transaksi_id', 'transaksis.*', 'anggotas.*', 'bukus.*')
             ->where('transaksis.id', '=', $id)
             ->get();
         return view('transaksi.show',['transaksi'=>$transaksi]);
@@ -97,7 +100,15 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $transaksi = Transaksi::find($id);
+        $transaksi->anggota_id = $request->anggota_id;
+        $transaksi->buku_id = $request->buku_id;
+        $transaksi->tgl_pinjam = $request->tgl_pinjam;
+        $transaksi->tgl_kembali = $request->tgl_kembali;
+        $transaksi->status = $request->status;
+        $transaksi->save();
+        return redirect()->route('transaksi.index');
     }
 
     /**
@@ -113,15 +124,25 @@ class TransaksiController extends Controller
         return redirect()->route('transaksi.index');
     }
 
+    public function printtrans($id)
+    {
+        $transaksi = DB::table('transaksis')
+            ->join('anggotas', 'anggotas.id', '=', 'transaksis.anggota_id')
+            ->join('bukus', 'bukus.id', '=', 'transaksis.buku_id')
+            ->where('transaksis.id', '=', $id)
+            ->get();
+        $pdf = PDF::loadview('transaksi.print',['transaksi'=>$transaksi]); 
+        return $pdf->stream();
+    }
+
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $transaksis = DB::table('transaksis')
-                    ->join('anggotas', 'anggotas.id', '=', 'transaksis.anggota_id')
+        $transaksis = Transaksi::join('anggotas', 'anggotas.id', '=', 'transaksis.anggota_id')
                     ->join('bukus', 'bukus.id', '=', 'transaksis.buku_id')
-                    ->where('anggotas.nama', 'like', "%" . $keyword . "%")->paginate(5)
-                    ->get();
-        return view('transaksi.index', compact('transaksi'))->with('i', (request()->input('page', 1) - 1) * 5);
-        
+                    ->select('transaksis.id as transaksi_id', 'transaksis.*', 'anggotas.*', 'bukus.*')
+                    ->where('anggotas.nama', 'like', "%".$keyword."%")
+                    ->paginate();
+        return view('transaksi.index', compact('transaksis'))->with('i', (request()->input('page', 1) - 1) * 5);    
     }
 }

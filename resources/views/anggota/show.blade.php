@@ -3,7 +3,7 @@
 @section('title', 'TAMPIL DATA')
 
 @section('title1')
-<div> {{_('Tampil Data ')}} {{ $anggota->nama }} </div>
+<div> {{_('Data dari anggota')}} {{ $anggota->nama }} </div>
 @endsection
 
 @section('content')

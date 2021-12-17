@@ -11,6 +11,6 @@ class Buku extends Model
     protected $fillable = ['judul','kategori', 'pengarang', 'penerbit'];
     public function anggotas()
     {
-        return $this->hasMany(Anggota::class)->withPivot('tgl_pinjam', 'tgl_kembali');
+        return $this->hasMany(Anggota::class)->withPivot('tgl_pinjam', 'tgl_kembali', 'status');
     }
 }

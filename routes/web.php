@@ -27,16 +27,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('anggota', AnggotaController::class);
 Route::get('/search', [AnggotaController::class, 'search'])->name('search');
-
 Route::get('/print_all', [AnggotaController::class, 'print_all'])->name('print_all');
 
 Route::resource('buku', BukuController::class);
 Route::get('/searchbuku', [BukuController::class, 'search'])->name('searchbuku');
 
 Route::resource('transaksi', TransaksiController::class);
-Route::get('/searchtrans', [BukuController::class, 'search'])->name('searchtrans');
+Route::get('/searchtrans', [TransaksiController::class, 'search'])->name('searchtrans');
+Route::get('/transaksi/{id}/printtrans', [TransaksiController::class, 'printtrans']);
 
 Route::resource('user', UserController::class);
 Route::get('/searchuser', [UserController::class, 'searchuser'])->name('searchuser');
-
-Route::get('/transaksiid/{id}', [TransaksiController::class])->name('transaksiid');

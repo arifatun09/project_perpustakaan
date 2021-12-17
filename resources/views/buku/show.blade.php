@@ -3,7 +3,7 @@
 @section('title', 'TAMPIL DATA')
 
 @section('title1')
-<div> {{_('Tampil Data ')}} {{ $buku->judul }} </div>
+<div> {{_('Data dari buku yang berjudul ')}} {{ $buku->judul }} </div>
 @endsection
 
 @section('content')

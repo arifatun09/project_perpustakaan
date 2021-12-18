@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'DASHBOARD')
+@section('title')
+<div>
+DASHBOARD @can('manage-users') ADMIN @endcan
+</div>
+@endsection
 
 @section('title1', 'Selamat Datang!')
 

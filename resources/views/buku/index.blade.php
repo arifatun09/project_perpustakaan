@@ -9,9 +9,11 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
+          @can('manage-users')
           <div class="card-title">
             <a href="/buku/create" class="btn btn-success">+ Add Data</a>
           </div>
+          @endcan
           <div class="card-tools">
             <form action="{{ route('searchbuku') }}" method="post" >
               <div class="input-group input-group-sm" style="width: 150px;">

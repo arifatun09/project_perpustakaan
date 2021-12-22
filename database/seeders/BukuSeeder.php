@@ -15,56 +15,94 @@ class BukuSeeder extends Seeder
     public function run()
     {
         $buku = [
+            // [
+            //     'judul'=>'Belajar PHP', 
+            //     'kategori'=>'Ilmu Komputer', 
+            //     'pengarang'=>'Candra', 
+            //     'penerbit'=>'Media Baca',
+            // ],
+
+            // [
+            //     'judul'=>'Belajar HTML', 
+            //     'kategori'=>'Ilmu Komputer', 
+            //     'pengarang'=>'Rahmat Hakim', 
+            //     'penerbit'=>'Media Baca',
+            // ],
+
+            // [
+            //     'judul'=>'Kumpulan Puisi', 
+            //     'kategori'=>'Karya Sastra', 
+            //     'pengarang'=>'Bejo', 
+            //     'penerbit'=>'Media Kita',
+            // ],
+
+            // [
+            //     'judul'=>'Sejarah Islam', 
+            //     'kategori'=>'Ilmu Agama', 
+            //     'pengarang'=>'Sutejo', 
+            //     'penerbit'=>'Media Kita',
+            // ],
+
             [
-                'judul'=>'Belajar PHP', 
-                'kategori'=>'Ilmu Komputer', 
-                'pengarang'=>'Candra', 
-                'penerbit'=>'Media Baca', 
-                'status'=>'Dipinjam',
+                'judul'=>'Pintar CSS', 
+                'kategori'=> 'Ilmu Komputer', 
+                'pengarang'=> 'Anton', 
+                'penerbit' =>'Graha Buku', 
             ],
 
             [
-                'judul'=>'Belajar HTML', 
-                'kategori'=>'Ilmu Komputer', 
-                'pengarang'=>'Rahmat Hakim', 
-                'penerbit'=>'Media Baca', 
-                'status'=>'Dipinjam',
+                'judul'=>'Kumpulan Cerpen', 
+                'kategori'=> 'Karya Sastra', 
+                'pengarang'=>'Rudi',
+                'penerbit'=>'Media Aksara', 
             ],
-
+            
             [
-                'judul'=>'Kumpulan Puisi', 
-                'kategori'=>'Karya Sastra', 
-                'pengarang'=>'Bejo', 
-                'penerbit'=>'Media Kita', 
-                'status'=>'Tersedia',
+                'judul'=>'Keamanan Data', 
+                'kategori'=> 'Ilmu Komputer', 
+                'pengarang'=>'Nusron',
+                'penerbit'=> 'Media Cipta', 
             ],
-
+            
             [
-                'judul'=>'Sejarah Islam', 
-                'kategori'=>'Ilmu Agama', 
-                'pengarang'=>'Sutejo', 
-                'penerbit'=>'Media Kita', 
-                'status'=>'Dipinjam',
+                'judul'=>'Dasar-Dasar Database', 
+                'kategori'=> 'Ilmu Komputer',
+                'pengarang'=> 'Andi',
+                'penerbit'=> 'Graha Media', 
             ],
-
-            // [
-            //     'judul'=>'Pintar CSS', 'Ilmu Komputer', 'Anton', 'Graha Buku', 'Tersedia'],
-            // [
-            //     'judul'=>'Kumpulan Cerpen', 'Karya Sastra', 'Rudi', 'Media Aksara', 'Dipinjam'],
-            // [
-            //     'judul'=>'Keamanan Data', 'Ilmu Komputer', 'Nusron', 'Media Cipta', 'Dipinjam'],
-            // [
-            //     'judul'=>'Dasar-Dasar Database', 'Ilmu Komputer', 'Andi', 'Graha Media', 'Tersedia'],
-            // [
-            //     'judul'=>'Kumpulan Cerpen 2', 'Karya Sastra', 'Sutejo', 'Media Cipta', 'Tersedia'],
-            // [
-            //     'judul'=>'Peradaban Islam', 'Ilmu Agama', 'Aminnudin', 'Media Baca', 'Tersedia'],
-            // [
-            //     'judul'=>'Kumpulan Cerpen 3', 'Karya Sastra', 'Rudi', 'Media Baca', 'Tersedia'],
-            // [
-            //     'judul'=>'Teknologi Informasi', 'Ilmu Komputer', 'Andi A', 'Media Baca', 'Tersedia'],
-            // [
-            //     'judul'=>'Dermaga Biru', 'Karya Sastra', 'Sutejo', 'Media Cipta', 'Tersedia'],
+            
+            [
+                'judul'=>'Kumpulan Cerpen 2', 
+                'kategori'=> 'Karya Sastra', 
+                'pengarang'=> 'Sutejo',
+                'penerbit'=> 'Media Cipta', ],
+            [
+                'judul'=>'Peradaban Islam', 
+                'kategori'=> 'Ilmu Agama',
+                'pengarang'=> 'Aminnudin',
+                'penerbit'=> 'Media Baca', 
+            ],
+            
+            [
+                'judul'=>'Kumpulan Cerpen 3', 
+                'kategori'=> 'Karya Sastra',
+                'pengarang'=> 'Rudi',
+                'penerbit'=> 'Media Baca', 
+            ],
+            
+            [
+                'judul'=>'Teknologi Informasi', 
+                'kategori'=> 'Ilmu Komputer',
+                'pengarang'=> 'Andi A',
+                'penerbit'=> 'Media Baca',
+            ],
+            
+            [
+                'judul'=>'Dermaga Biru', 
+                'kategori'=> 'Karya Sastra',
+                'pengarang'=> 'Sutejo',
+                'penerbit'=> 'Media Cipta',
+            ],
         ];
         DB::table('bukus')->insert($buku);
     }
